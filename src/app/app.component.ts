@@ -26,7 +26,6 @@ export class MyApp {
     this.pages = [
       { title: 'Accueil', component: HomePage },
       { title: 'Ajouter', component: AjouterPage },
-      { title: 'Modifier', component: ModifierPage},
       { title: 'Panier', component: PanierPage}
     ];
 

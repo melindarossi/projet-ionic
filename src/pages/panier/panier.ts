@@ -19,7 +19,7 @@ export class PanierPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.panierSection=this.navParams.data.p2;
   }
-
+/*fonction qui permet de supprimer une pizza qui a précédement été ajouté dans le panier*/
   SupprimerPanier(laPizza){
     let i=0;
     for(let pizza of this.panierSection){

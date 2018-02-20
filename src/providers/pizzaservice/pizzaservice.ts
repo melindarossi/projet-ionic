@@ -19,6 +19,7 @@ export class Pizzaservice {
   ditMoiBonjour(id:number){
     console.log("ditMoiBonjour('"+ id + "')");
   }
+  /*cette fonction permet de récuperer les pizzas qui sont sur le webservice*/
   get(){
     let rt: Array<Pizza>=new Array<Pizza>();
     return new Promise<Array<Pizza>>(resolve => {
@@ -32,6 +33,7 @@ export class Pizzaservice {
     });
 
   }
+  /*fonction qui va chercher les pizzas par id*/
   getById(id:number){
     let trouverParId: Pizza;
     return new Promise<Pizza>(resolve => {
@@ -41,7 +43,7 @@ export class Pizzaservice {
     });
   });
   }
-
+/*fonction permettant d'ajouter une pizza au webservice*/
 ajouter(pizza: Pizza){
   return new Promise<Pizza>(resolve => {
     this.http.post(this.url, pizza).subscribe((data:any)=>{
@@ -49,7 +51,7 @@ ajouter(pizza: Pizza){
     });
   });
 }
-
+/*fonction qui permet de supprimer une pizza du webservice*/
 supprimer(id:number){
   return new Promise<Pizza>(resolve =>{
     this.http.delete(this.url + id).subscribe((data: any)=> {
@@ -57,7 +59,7 @@ supprimer(id:number){
     });
   });
 }
-
+/*fonction qui permet de modifier une pizza du webservice*/
 modifier(pizza: Pizza){
   return new Promise<Pizza>(resolve => {
     this.http.patch(this.url + pizza.id, pizza).subscribe((data: any)=>{

@@ -1,3 +1,6 @@
+/*Rossi Mélinda
+Cette page abrite toute les fonctions necessaires à la page d'accueil*/
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
@@ -23,38 +26,39 @@ export class HomePage {
     this.pizza.getById(2).then((item : any)=> {
     });
   }
+/*Liste des pizzas*/
 getAccueil(){
   this.pizza.get().then((items: Array<any>)=>{
     this.miamPizza=items;
   });
 }
-
+/*Fonction de modification des pizzas*/
 modifPizza(laPizza){
   this.navCtrl.push(ModifierPage, {p1:laPizza});
 }
-
+/*Fonction qui permet de supprimer une pizza et affiche un message de réussite*/
 supprimePizza(laPizza){
   this.pizza.supprimer(laPizza.id).then((item)=>{
     this.getAccueil();
   });
   this.message("La pizza "+laPizza.name+" a été supprimer");
 }
-
+/*fonction toast qui permet l'affichage de message*/
 message(texte){
   let toast=this.toastCrtl.create({message:texte,duration:3000, position:'bottom'});
   toast.present();
 }
-
+/*fonction de panier*/
 panier(laPizza){
   this.panierSection.push(laPizza);
   this.message("Vous avez ajouté "+laPizza.name+" a votre panier");
 }
-
+/*Fonction permettant d'ajouter une pizza*/
 ajouter(){
   this.navCtrl.push(AjouterPage);
   this.message("Vous avez ajouté une pizza à la carte");
 }
-
+/*fonction affichant le message d'ajout au panier*/
 vuePanier(){
   this.navCtrl.push( PanierPage, {
     p2:this.panierSection
