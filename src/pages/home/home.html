@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Accueil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let item of miamPizza">
+    <ion-card-content>
+      {{item.name}}
+      <img style="width:50%;"src='{{item.picture}}'/> <hr/>
+      {{item.desc}} <br/>
+      Prix:<strong>{{item.price}}€</strong><br/>
+      <button ion-button color="dark" (clik)="panier(item)">Panier</button>
+      <button ion-button color="danger" (click)="supprimer(item)">Supprimer</button>
+      <button ion-button color="safe" (click)="ajouter(item)">Modifier</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
