@@ -4,7 +4,6 @@ import { ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 
 import { AjouterPage } from '../ajouter/ajouter';
-import { DetailsPage } from '../details/details';
 import { ModifierPage } from '../modifier/modifier';
 import { PanierPage } from '../panier/panier';
 
@@ -18,7 +17,6 @@ import { Pizza } from '../../model/pizza';
 export class HomePage {
   panierSection=new Array<Pizza>();
   miamPizza: any;
-  items: Array<Pizza>= new Array<Pizza>();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private pizza : Pizzaservice, private toastCrtl: ToastController, private vibration: Vibration){
     this.getAccueil();
@@ -32,7 +30,7 @@ getAccueil(){
 }
 
 modifPizza(laPizza){
-  this.navCtrl.push(ModifierPage, {P1:laPizza});
+  this.navCtrl.push(ModifierPage, {p1:laPizza});
 }
 
 supprimePizza(laPizza){
@@ -59,7 +57,7 @@ ajouter(){
 
 vuePanier(){
   this.navCtrl.push( PanierPage, {
-    P2:this.panierSection
+    p2:this.panierSection
   });
 }
 

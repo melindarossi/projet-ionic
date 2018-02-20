@@ -12,7 +12,6 @@ import { Pizzaservice } from '../providers/pizzaservice/pizzaservice';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AjouterPage } from '../pages/ajouter/ajouter';
-import { DetailsPage } from '../pages/details/details';
 import { ModifierPage } from '../pages/modifier/modifier';
 import { PanierPage } from '../pages/panier/panier';
 
@@ -25,7 +24,6 @@ import { Camera } from '@ionic-native/camera';
     HomePage,
     ListPage,
     AjouterPage,
-    DetailsPage,
     ModifierPage,
     PanierPage
   ],
@@ -41,8 +39,7 @@ import { Camera } from '@ionic-native/camera';
     ListPage,
     AjouterPage,
     ModifierPage,
-    PanierPage,
-    DetailsPage
+    PanierPage
   ],
   providers: [
     StatusBar,

@@ -14,12 +14,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'panier.html',
 })
 export class PanierPage {
+  panierSection: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.panierSection=this.navParams.data.p2;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PanierPage');
+  SupprimerPanier(laPizza){
+    let i=0;
+    for(let pizza of this.panierSection){
+      i++
+      if(laPizza.id==pizza.id){
+      this.panierSection.splice(i,1);
+      console.log(this.panierSection);
+      }
+    }
   }
 
 }

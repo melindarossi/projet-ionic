@@ -11,7 +11,7 @@ import { Pizza } from '../../model/pizza';
 @Injectable()
 export class Pizzaservice {
 
-  private readonly url= "http://kim.jcatania.io:3000/pizza";
+  private readonly url= "http://kim.jcatania.io:3000/pizza/";
 
   constructor(public http: HttpClient) {
     console.log('Hello PizzaserviceProvider Provider');
