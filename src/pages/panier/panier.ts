@@ -30,26 +30,10 @@ export class PanierPage {
     console.log(this.navParams.data.p2);
   }
 /*fonction qui permet de supprimer une pizza qui a précédement été ajouté dans le panier*/
-  SupprimerPanier(laPizza){
-     let panier : Array<Pizza> = new Array<Pizza>() ;
-      this.nativeStorage.getItem('monPanier')
-         .then((panierStorage: Array<Pizza>) => {
-            panier = panierStorage ;
-            for (let i =0; i < panier.length; i++) {
-              let pizza : Pizza = panier [i] ;
-              if (pizza.id == laPizza.id) {
-                // remove item from storage
-                panier.splice (i, 1) ;
-                // remove it from view
-                this.panierSection.splice (i, 1) ;
-              }
-            }
-          },((error) => {
-            console.error('Error storing item', error) ;
-          })
-         );
+  SupprimerPanier(i:number){
+        this.panierSection.splice (i, 1) ;
          // add current panier to this.panierSection
-         this.nativeStorage.setItem('monPanier', panier)
+         this.nativeStorage.setItem('monPanier', this.panierSection)
            .then(
              () => console.log('Stored item!'),
              error => console.error('Error storing item', error)

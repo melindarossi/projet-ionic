@@ -10,13 +10,13 @@
 
 <ion-content padding>
   <h2 *ngIf="!panierSection.length">Panier vide :)</h2>
-  <ion-card *ngFor="let vuePanier of panierSection">
+  <ion-card *ngFor="let vuePanier of panierSection; let i=index;">
     <span>{{vuePanier.prix}}€</span>
     <img src="{{vuePanier.picture}}"/>
     <ion-card-content>
       <ion-card-title>{{vuePanier.nom}}</ion-card-title>
       <p>{{vuePanier.desc}}</p>
-      <button ion-button color="dark" (click)="SupprimerPanier(vuePanier)">Retirer du panier</button>
+      <button ion-button color="dark" (click)="SupprimerPanier(i)">Retirer du panier</button>
     </ion-card-content>
   </ion-card>
 </ion-content>
