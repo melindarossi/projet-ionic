@@ -36,12 +36,12 @@ export class PanierPage {
          .then((panierStorage: Array<Pizza>) => {
             panier = panierStorage ;
             for (let i =0; i < panier.length; i++) {
-              let pizza = panier [i] ;
+              let pizza : Pizza = panier [i] ;
               if (pizza.id == laPizza.id) {
                 // remove item from storage
-                panier.slice (i, 1) ;
+                panier.splice (i, 1) ;
                 // remove it from view
-                this.panierSection.slice (i, 1) ;
+                this.panierSection.splice (i, 1) ;
               }
             }
           },((error) => {
