@@ -8,16 +8,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
+ import { Pizza } from '../../model/pizza';
+ import { NativeStorage } from '@ionic-native/native-storage';
+
 @IonicPage()
 @Component({
   selector: 'page-panier',
   templateUrl: 'panier.html',
 })
 export class PanierPage {
-  panierSection: any;
+  panierSection: Array<Pizza> = new Array<Pizza>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.panierSection=this.navParams.data.p2;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage) {
+   this.nativeStorage.getItem('monPanier')
+      .then((panierSection: Array<Pizza>) => {
+         this.panierSection = panierSection ;
+       },((error) => {
+         console.error('Error storing item', error) ;
+       })
+      );
+    console.log(this.navParams.data.p2);
   }
 /*fonction qui permet de supprimer une pizza qui a précédement été ajouté dans le panier*/
   SupprimerPanier(laPizza){

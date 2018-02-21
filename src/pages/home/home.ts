@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { AjouterPage } from '../ajouter/ajouter';
 import { ModifierPage } from '../modifier/modifier';
@@ -18,10 +19,10 @@ import { Pizza } from '../../model/pizza';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  panierSection=new Array<Pizza>();
+  panierSection: Array<Pizza>=new Array<Pizza>();
   miamPizza: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pizza : Pizzaservice, private toastCrtl: ToastController, private vibration: Vibration){
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pizza : Pizzaservice, private toastCrtl: ToastController, private vibration: Vibration, private nativeStorage: NativeStorage){
     this.getAccueil();
     this.pizza.getById(2).then((item : any)=> {
     });
@@ -51,8 +52,14 @@ message(texte){
 /*fonction de panier*/
 panier(laPizza){
   this.panierSection.push(laPizza);
+  this.nativeStorage.setItem('monPanier', this.panierSection)
+    .then(
+      () => console.log('Stored item!'),
+      error => console.error('Error storing item', error)
+    );
   this.message("Vous avez ajouté "+laPizza.name+" a votre panier");
 }
+
 /*Fonction permettant d'ajouter une pizza*/
 ajouter(){
   this.navCtrl.push(AjouterPage);

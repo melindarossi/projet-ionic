@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { Pizzaservice } from '../../providers/pizzaservice/pizzaservice';
 import { HomePage } from '../home/home';

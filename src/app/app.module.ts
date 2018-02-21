@@ -17,6 +17,7 @@ import { PanierPage } from '../pages/panier/panier';
 
 import { Vibration } from '@ionic-native/vibration';
 import { Camera } from '@ionic-native/camera';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { Camera } from '@ionic-native/camera';
     Pizzaservice,
     Vibration,
     Camera,
+    NativeStorage
   ]
 })
 export class AppModule {}
