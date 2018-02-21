@@ -65,11 +65,6 @@ ajouter(){
   this.navCtrl.push(AjouterPage);
   this.message("Vous avez ajouté une pizza à la carte");
 }
-/*fonction affichant le message d'ajout au panier*/
-vuePanier(){
-  this.navCtrl.push( PanierPage, {
-    p2:this.panierSection
-  });
-}
+
 
 }

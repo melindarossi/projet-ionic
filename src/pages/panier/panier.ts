@@ -33,11 +33,11 @@ export class PanierPage {
   SupprimerPanier(laPizza){
      let panier : Array<Pizza> = new Array<Pizza>() ;
       this.nativeStorage.getItem('monPanier')
-         .then((panierSection: Array<Pizza>) => {
-            panier = panierSection ;
+         .then((panierStorage: Array<Pizza>) => {
+            panier = panierStorage ;
             for (let i =0; i < panier.length; i++) {
               let pizza = panier [i] ;
-              if (pizza.id = laPizza.id) {
+              if (pizza.id == laPizza.id) {
                 // remove item from storage
                 panier.slice (i, 1) ;
                 // remove it from view
