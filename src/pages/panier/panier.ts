@@ -31,7 +31,33 @@ export class PanierPage {
   }
 /*fonction qui permet de supprimer une pizza qui a précédement été ajouté dans le panier*/
   SupprimerPanier(laPizza){
-    let i=0;
+     let panier : Array<Pizza> = new Array<Pizza>() ;
+      this.nativeStorage.getItem('monPanier')
+         .then((panierSection: Array<Pizza>) => {
+            panier = panierSection ;
+            for (let i =0; i < panier.length; i++) {
+              let pizza = panier [i] ;
+              if (pizza.id = laPizza.id) {
+                // remove item from storage
+                panier.slice (i, 1) ;
+                // remove it from view
+                this.panierSection.slice (i, 1) ;
+              }
+            }
+          },((error) => {
+            console.error('Error storing item', error) ;
+          })
+         );
+         // add current panier to this.panierSection
+         this.nativeStorage.setItem('monPanier', panier)
+           .then(
+             () => console.log('Stored item!'),
+             error => console.error('Error storing item', error)
+           );
+         console.log(this.panierSection);
+
+  }
+/*    let i=0;
     for(let pizza of this.panierSection){
       i++
       if(laPizza.id==pizza.id){
@@ -39,6 +65,6 @@ export class PanierPage {
       console.log(this.panierSection);
       }
     }
-  }
+  }*/
 
 }
